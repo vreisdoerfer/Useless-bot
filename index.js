@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const config = require('./config.json');
 const flipCoin = require('./modules/flipCoin.js');
 const drawCard = require('./modules/drawCard.js');
+const dice = require('./modules/dice.js');
+const help = require('./modules/help.js');
 
 const client = new Discord.Client();
 
@@ -18,6 +20,10 @@ client.on('message', function(message) {
                 message.channel.send(flipCoin.flipCoin(message));
             } else if (message.content === "!drawacard") {
                 message.channel.send(drawCard.drawACard(message));
+            } else if (message.content === "!burrão") {
+                message.channel.send(help.showHelpTips());
+            } else {
+                dice.generateValues(message);
             }
         }
     }
